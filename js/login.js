@@ -1,8 +1,15 @@
 const loginForm = document.querySelector(".loginForm"); // 로그인 입력 폼
 const loginBtn = document.querySelector(".loginBtn"); // 로그인 버튼
+const passwordToggle = document.querySelector(".passwordToggle"); // 비밀번호 토글 (보기/숨기기)
 
 const userEmail = document.querySelector(".userEmail"); // 사용자 이메일 입력란
 const userPassword = document.querySelector(".userPassword"); // 사용자 비밀번호 입력란
+
+// 비밀번호 토글 클릭 이벤트 (비밀번호 보여주기/숨기기)
+passwordToggle.addEventListener("click", (event) => {
+  event.preventDefault();
+  userPassword.type = userPassword.type === "password" ? "text" : "password";
+});
 
 // 로그인 버튼 클릭 이벤트
 loginBtn.addEventListener("click", (event) => {
