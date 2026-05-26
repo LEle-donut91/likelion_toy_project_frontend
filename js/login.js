@@ -1,5 +1,6 @@
 const loginForm = document.querySelector(".loginForm"); // 로그인 입력 폼
 const loginBtn = document.querySelector(".loginBtn"); // 로그인 버튼
+const joinBtn = document.querySelector(".joinBtn"); // 회원가입 버튼
 const passwordToggle = document.querySelector(".passwordToggle"); // 비밀번호 토글 (보기/숨기기)
 
 const userEmail = document.querySelector(".userEmail"); // 사용자 이메일 입력란
@@ -34,6 +35,12 @@ loginBtn.addEventListener("click", (event) => {
   //   조건 모두 만족 시, 홈으로 이동
   location.href = "/html/home.html";
 });
+
+// 회원가입 버튼 클릭 이벤트
+joinBtn.onclick = function () {
+  // 회원가입 페이지로 이동
+  location.href = "/html/join.html";
+};
 
 // 이메일 유효성 체크
 function checkEmail(email) {
