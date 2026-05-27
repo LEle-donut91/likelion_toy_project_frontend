@@ -1,11 +1,142 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홈 화면</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>사이</title>
+    <!-- home.css 불러오기 -->
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+
+  <body>
+    <!-- 헤더 부분 -->
+    <header>
+      <!-- 서비스명 -->
+      <div class="headerOne">
+        <b>사이</b>
+        <div class="earthIconBg">
+          <img class="earthIcon" src="/assets/home/earth_icon.svg" />
+        </div>
+      </div>
+
+      <!-- 서비스 안내 문구  -->
+      <div class="headerTwo">
+        <div>외국인 유학생과 대학 공동체를 잇는 채팅 플랫폼</div>
+      </div>
+    </header>
+
+    <!-- 헤더 구분선 -->
+    <div class="headerDivider"></div>
+
+    <!-- 첫 번째 섹션 (서비스 소개) -->
+    <section class="sectionOne">
+      <!-- 서비스 로고, 서비스 소개 문구 -->
+      <div class="divOne">
+        <img class="logoIcon" src="/assets/home/logo_icon.svg" />
+        <div>
+          <b>다름을 잇는 연결, 사이</b>
+          <span>
+            외국인 유학생과 내국인 재학생<br />자연스럽게 교류할 수 있도록
+            돕습니다.
+          </span>
+        </div>
+      </div>
+
+      <!-- 번역 지원, 관심사 매칭 -->
+      <div class="divTwo">
+        <div>
+          <img src="/assets/home/translate_white_icon.svg" />
+          <span>번역 지원</span>
+        </div>
+        <div>
+          <img src="/assets/home/people_icon.svg" />
+          <span>관심사 매칭</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 두 번째 섹션 (버튼 2개) -->
+    <section class="sectionTwo">
+      <!-- [친구 추천 · 매칭] 버튼-->
+      <button class="recmdBtn">
+        <div class="btnIconBg">
+          <img src="/assets/home/friend_icon.svg" />
+        </div>
+        <div class="btnParagraph">
+          <b>친구 추천 · 매칭</b>
+          <span>관심사 기반 내국인·유학생 연결</span>
+        </div>
+        <img src="/assets/home/arrow_icon.svg" />
+      </button>
+
+      <!-- [채팅 · 번역 지원] 버튼 -->
+      <button class="friendBtn">
+        <div class="btnIconBg">
+          <img src="/assets/home/chat_icon.svg" />
+        </div>
+
+        <div class="btnParagraph">
+          <b>채팅 · 번역 지원</b>
+          <span>실시간 번역, 학교·상담 채팅</span>
+        </div>
+        <img src="/assets/home/arrow_icon.svg" />
+      </button>
+    </section>
+
+    <!-- 세 번째 섹션 (6개 국가, 번역 지원 안내 문구) -->
+    <section class="sectionThree">
+      <div>
+        <img class="earthIcon" src="/assets/home/earth_icon.svg" />
+        <b class="info">다양한 국적의 친구들</b>
+      </div>
+
+      <!-- 6개의 국가 -->
+      <table>
+        <tr>
+          <td>🇨🇳 중국</td>
+          <td>🇻🇳 베트남</td>
+          <td>🇺🇸 미국</td>
+        </tr>
+
+        <tr>
+          <td>🇯🇵 일본</td>
+          <td>🇫🇷 프랑스</td>
+          <td>🇲🇳 몽골</td>
+        </tr>
+      </table>
+
+      <!-- 번역 지원 안내 문구 -->
+      <div class="translateInfo">
+        <img src="/assets/home/translate_icon.svg" />
+        <div>모든 채팅은 자동 번역으로 편하게</div>
+      </div>
+    </section>
+
+    <!-- 바텀 내비게이션 바 -->
+    <nav>
+      <!-- 홈 버튼 (home.html로 이동) -->
+      <button class="homeNav">
+        <img class="activeIcon" src="/assets/home/home_active_nav_icon.svg" />
+        <span class="activeSpan">홈</span>
+      </button>
+
+      <!-- 채팅 버튼 (friend.html로 이동) -->
+      <button class="friendNav">
+        <img class="nonActiveIcon" src="/assets/home/chat_nav_icon.svg" />
+        <span class="nonActiveSpan">채팅</span>
+      </button>
+
+      <!-- 프로필 버튼 -->
+      <button class="profileNav">
+        <img class="nonActiveIcon" src="/assets/home/profile_nav_icon.svg" />
+        <span class="nonActiveSpan">프로필</span>
+      </button>
+    </nav>
+
+    <!-- 트위터 이모지 불러오는 script 태그 -->
+    <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+
+    <!-- home.js 불러오기 -->
+    <script src="/js/home.js"></script>
+  </body>
 </html>
