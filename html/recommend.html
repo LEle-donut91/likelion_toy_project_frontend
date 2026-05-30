@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/recommend.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>recommend</title>
 </head>
+
 <body>
     <div class="phone-container">
-        
+
         <div class="content-scroll">
-            
-            <div class="header-title">
-                <h1>로그인 성공</h1>
-                <p>이제 관심사 기반 친구를 추천받아 보세요</p>
+
+            <div class="header-container">
+                <button class="btn-back" onclick="history.back()">
+                    <span class="material-symbols-outlined">arrow_back_ios</span>
+                </button>
+                <div class="header-title">
+                    <h1>친구 추천</h1>
+                    <p>이제 관심사 기반 친구를 추천받아 보세요</p>
+                </div>
             </div>
-            
+
+
             <div class="success-login">
                 <div class="header-profile">
                     <div class="profile-img-wrapper">
-                        <img src="../assets/recommend/symbol.svg" alt="프로필" class="profile-img">
+                        <img src="../assets/home/people_icon.svg" alt="프로필" class="profile-img">
                     </div>
-                    
+
                     <div class="profile-info">
                         <div class="info-header">
                             <span class="reccomend">오늘의 추천 친구</span>
@@ -35,12 +44,12 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
 
             <div class="friend-card">
                 <div class="card-profile">
-                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Jian"alt="프로필" class="profile-img">
-                    
+                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Jian" alt="프로필" class="profile-img">
+
                     <div class="profile-info">
                         <div class="info-header">
                             <span class="name">지안</span>
@@ -56,14 +65,18 @@
                     </div>
                 </div>
                 <div class="card-actions">
-                    <button class="btn btn-next"><img src="../assets/home/arrow_icon.svg" alt="next">다음</button>
-                    <button class="btn btn-like"><img src="../assets/home/Symbol.png" alt="">관심</button>
+                    <button class="btn btn-next">
+                        <img src="https://api.iconify.design/fa6-solid:xmark.svg?color=%23555555" alt=""> 다음
+                    </button>
+                    <button class="btn btn-like">
+                        <img src="https://api.iconify.design/fa6-regular:heart.svg?color=%23ffffff" alt=""> 관심
+                    </button>
                 </div>
             </div>
 
             <div class="friend-card">
                 <div class="card-profile">
-                    <img src = "https://api.dicebear.com/7.x/adventurer/svg?seed=doyoun" alt="프로필" class="profile-img">
+                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=doyoun" alt="프로필" class="profile-img">
                     <div class="profile-info">
                         <div class="info-header">
                             <span class="name">도윤</span>
@@ -79,11 +92,15 @@
                     </div>
                 </div>
                 <div class="card-actions">
-                    <button class="btn btn-next"><img src="../assets/home/arrow_icon.svg" alt="next">다음</button>
-                    <button class="btn btn-like"><img src="../assets/home/Symbol.png" alt="">관심</button>
+                    <button class="btn btn-next">
+                        <img src="https://api.iconify.design/fa6-solid:xmark.svg?color=%23555555" alt=""> 다음
+                    </button>
+                    <button class="btn btn-like">
+                        <img src="https://api.iconify.design/fa6-regular:heart.svg?color=%23ffffff" alt=""> 관심
+                    </button>
                 </div>
             </div>
-            
+
             <div class="friend-card">
                 <div class="card-profile">
                     <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=mingi" alt="프로필" class="profile-img">
@@ -102,17 +119,22 @@
                     </div>
                 </div>
                 <div class="card-actions">
-                    <button class="btn btn-next"><img src="../assets/home/arrow_icon.svg" alt="next">다음</button>
-                    <button class="btn btn-like"><img src="../assets/home/Symbol.png" alt="">관심</button>
+                    <button class="btn btn-next">
+                        <img src="https://api.iconify.design/fa6-solid:xmark.svg?color=%23555555" alt=""> 다음
+                    </button>
+                    <button class="btn btn-like">
+                        <img src="https://api.iconify.design/fa6-regular:heart.svg?color=%23ffffff" alt=""> 관심
+                    </button>
                 </div>
             </div>
 
             <div class="footer">
                 <span class="footer-top">매일 10명의 친구를 추천받아요</span>
-                <span class="footer-bottom">10:00 갱신 &nbsp 알림 갱신</span>
+                <span class="footer-bottom">10:00 갱신 &nbsp; 알림 갱신</span>
             </div>
 
-        </div> <nav class="bottom-nav">
+        </div>
+        <nav class="bottom-nav">
             <a class="nav-item active">
                 <img src="https://img.icons8.com/material-rounded/24/000000/home.png" alt="home">
                 <span>홈</span>
@@ -131,5 +153,7 @@
             </a>
         </nav>
 
-    </div> </body>
+    </div>
+</body>
+
 </html>
