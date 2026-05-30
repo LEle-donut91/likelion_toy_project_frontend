@@ -12,9 +12,9 @@
 
 <body>
 
-   <div class="phone-container">
+    <div class="phone-container">
         <div class="content-scroll">
-            
+
             <div class="header-wrapper">
                 <button class="btn-back" onclick="history.back()">
                     <span class="material-symbols-outlined">chevron_left</span>
@@ -27,94 +27,13 @@
 
             <div class="section-title">받은 관심</div>
 
-            <div class="card-list">
+            <div id="card-list-container" class="card-list"></div>
 
-                <div class="friend-card">
-                    <div class="card-top">
-                        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Jian" alt="지안" class="profile-img">
-                        <div class="profile-info">
-                            <div class="info-row-1">
-                                <span class="name">지안</span>
-                                <span class="tag-country">🇰🇷 한국</span>
-                                <span class="tag-match match-high">일치 85%</span>
-                            </div>
-                            <div class="info-row-2">경영학과 3학년 · 사진·커피</div>
-                            <div class="info-row-3">
-                                <span class="hashtag">#여행</span>
-                                <span class="hashtag">#음악</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-divider"></div>
-                    <div class="card-bottom">
-                        <div class="date-info">
-                            <span class="material-symbols-outlined icon-clock">schedule</span>
-                            <span>026.02.14</span>
-                        </div>
-                        <span class="status-badge">대기 중</span>
-                        <div class="register"><button>친구추가</button></div>
-                    </div>
-                </div>
-
-                <div class="friend-card">
-                    <div class="card-top">
-                        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=doyoun" alt="도윤" class="profile-img">
-                        <div class="profile-info">
-                            <div class="info-row-1">
-                                <span class="name">도윤</span>
-                                <span class="tag-country">🇰🇷 한국</span>
-                                <span class="tag-match match-mid">일치 72%</span>
-                            </div>
-                            <div class="info-row-2">컴퓨터공학과 2학년 · 운동·영화</div>
-                            <div class="info-row-3">
-                                <span class="hashtag">#축구</span>
-                                <span class="hashtag">#넷플릭스</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-divider"></div>
-                    <div class="card-bottom">
-                        <div class="date-info">
-                            <span class="material-symbols-outlined icon-clock">schedule</span>
-                            <span>026.02.14</span>
-                        </div>
-                        <span class="status-badge">대기 중</span>
-                        <div class="register"><button>친구추가</button></div>
-                    </div>
-                </div>
-
-                <div class="friend-card">
-                    <div class="card-top">
-                        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=suyeon" alt="수연" class="profile-img">
-                        <div class="profile-info">
-                            <div class="info-row-1">
-                                <span class="name">수연</span>
-                                <span class="tag-country">🇰🇷 한국</span>
-                                <span class="tag-match match-mid">일치 68%</span>
-                            </div>
-                            <div class="info-row-2">디자인학과 4학년 · 그림·카페</div>
-                            <div class="info-row-3">
-                                <span class="hashtag">#일러스트</span>
-                                <span class="hashtag">#카페투어</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-divider"></div>
-                    <div class="card-bottom">
-                        <div class="date-info">
-                            <span class="material-symbols-outlined icon-clock">schedule</span>
-                            <span>026.02.14</span>
-                        </div>
-                        <span class="status-badge">대기 중</span>
-                        <div class="register">
-                            <button>친구추가</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
+
+
     </div>
+    <script src="../js/likesme.js"></script>
 </body>
 
 </html>
