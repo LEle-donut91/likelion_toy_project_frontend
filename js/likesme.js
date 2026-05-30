@@ -1,53 +1,53 @@
-// 1. 친구 추가가 완료된 친구 데이터 배열
-const friendListData = [
+const likedMeData = [
     {
         name: "지안",
         seed: "Jian",
         country: "🇰🇷 한국",
         match: "85%",
-        matchLevel: "high",
+        matchLevel: "high", // match-high 클래스용
         majorHobby: "경영학과 3학년 · 사진·커피",
         hashtags: ["#여행", "#음악"],
-        instagram: "@jian_log",
-        phone: "010-1234-5678"
+        date: "026.02.14",
+        status: "대기 중"
     },
     {
         name: "도윤",
         seed: "doyoun",
         country: "🇰🇷 한국",
         match: "72%",
-        matchLevel: "mid",
+        matchLevel: "mid",  // match-mid 클래스용
         majorHobby: "컴퓨터공학과 2학년 · 운동·영화",
         hashtags: ["#축구", "#넷플릭스"],
-        instagram: "@doyoun_fit",
-        phone: "010-9876-5432"
+        date: "026.02.14",
+        status: "대기 중"
     },
     {
         name: "수연",
         seed: "suyeon",
         country: "🇰🇷 한국",
         match: "68%",
-        matchLevel: "mid",
+        matchLevel: "mid",  // match-mid 클래스용
         majorHobby: "디자인학과 4학년 · 그림·카페",
         hashtags: ["#일러스트", "#카페투어"],
-        instagram: "@suyeon_art",
-        phone: "010-5555-4444"
+        date: "026.02.14",
+        status: "대기 중"
     }
 ];
 
-// 2. 화면에 친구 목록을 동적으로 그리는 함수
-function renderFriendList() {
-    const container = document.getElementById('friend-list-container');
+// 2. 화면에 관심 친구 리스트를 동적으로 그리는 함수
+function renderLikedMeList() {
+    const container = document.getElementById('card-list-container');
     if (!container) return;
 
-    container.innerHTML = ''; // 초기화
+    container.innerHTML = ''; // 기존 하드코딩 잔재 초기화
 
-    friendListData.forEach((friend) => {
+    likedMeData.forEach((friend) => {
+        // 해시태그 span 배열 생성
         const hashtagHTML = friend.hashtags
             .map(tag => `<span class="hashtag">${tag}</span>`)
             .join('');
 
-        // 깨져있던 세 번째 카드 레이아웃을 정상 구조로 수정하여 반영
+        // 카드 생성
         const cardHTML = `
             <div class="friend-card">
                 <div class="card-top">
@@ -62,15 +62,17 @@ function renderFriendList() {
                         <div class="info-row-3">
                             ${hashtagHTML}
                         </div>
-                        
-                        <div class="expand-btn" onclick="toggleDetails(this)">
-                            <span class="material-symbols-outlined expand-icon">expand_more</span>
-                        </div>
-                        
-                        <div class="extra-info">
-                            <p>📸 인스타그램: <strong>${friend.instagram}</strong></p>
-                            <p>📞 연락처: <strong>${friend.phone}</strong></p>
-                        </div>
+                    </div>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-bottom">
+                    <div class="date-info">
+                        <span class="material-symbols-outlined icon-clock">schedule</span>
+                        <span>${friend.date}</span>
+                    </div>
+                    <span class="status-badge">${friend.status}</span>
+                    <div class="register">
+                        <button onclick="addFriend('${friend.name}')">친구추가</button>
                     </div>
                 </div>
             </div>
@@ -80,16 +82,12 @@ function renderFriendList() {
     });
 }
 
-// 3. 아코디언 토글 제어 함수
-function toggleDetails(element) {
-    // 클릭된 버튼에서 가장 가까운 상위의 .friend-card 요소를 찾습니다.
-    const card = element.closest('.friend-card');
-    if (card) {
-        card.classList.toggle('is-open');
-    }
+// 3. 친구 추가 버튼 클릭 이벤트
+function addFriend(name) {
+    alert(`${name}님에게 친구 요청을 수락(또는 추가)했습니다!`);
 }
 
-// 4. 페이지 로드 시 실행
+// 4. 페이지 로드 시 렌더링 실행
 window.onload = function() {
-    renderFriendList();
+    renderLikedMeList();
 };
