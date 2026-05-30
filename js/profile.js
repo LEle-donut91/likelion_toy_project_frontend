@@ -1,40 +1,253 @@
-const userProfile = {
-  name: "김서준",
-  country: "한국",
-  school: "서울대학교",
-  major: "컴퓨터공학과",
-  grade: "3학년",
+let isEditing = false; // 학적 정보 수정 중인지
+let isIntroEditing = false; // 자기소개 수정 중인지
+let isInterestAdd = false; // 관심사, 취미 수정 중인지
 
-  interests: ["여행", "음악", "영화", "축구", "사진", "커피", "게임"],
+const editBtn = document.querySelector(".editBtn"); // 학적 정보 수정 버튼
+const editIntroBtn = document.querySelector(".editIntroBtn"); // 자기소개 수정 버튼
+const addInterestBtn = document.querySelector(".addInterestBtn"); // 관심사, 취미 수정 버튼
+const friendBtn = document.querySelector(".friendBtnBg"); // [관심 페이지로 이동] 버튼
 
-  introduction:
-    "안녕하세요! 저는 컴퓨터공학을 전공하고 있는 김서준입니다. 주말에는 카페에서 사진 찍는 걸 좋아하고, 새로운 음악을 발견하는 게 취미예요. 같은 관심사를 가진 친구들을 만나고 싶어요.",
-};
+const homeNav = document.querySelector(".homeNav"); // 바텀 내비게이션 바 - [홈] 버튼
+const friendNav = document.querySelector(".friendNav"); // 바텀 내비게이션 바 - [채팅] 버튼
+const profileNav = document.querySelector(".profileNav"); // 바텀 내비게이션 바 - [프로필] 버튼
 
-document.querySelector(".userName").textContent = userProfile.name;
+// 타인 프로필 조회 (GET)
+async function getUserProfile(userId) {
+  const res = await fetch(`/api/profile/${userId}/`, {
+    method: "GET",
+    credentials: "include",
+  });
 
-document.querySelector(".userCountry").textContent = userProfile.country;
+  // 프로필 조회 실패
+  if (!res.ok) {
+    throw new Error("프로필 조회 실패");
+  }
 
-document.querySelector(".userSchool").textContent = userProfile.school;
+  const profile = await res.json();
 
-// 같은 클래스가 여러 개 있으므로 전부 변경
-document
-  .querySelectorAll(".userMajor")
-  .forEach((el) => (el.textContent = userProfile.major));
+  // 프로필 렌더링
+  renderProfile(profile);
 
-document
-  .querySelectorAll(".userGrade")
-  .forEach((el) => (el.textContent = userProfile.grade));
+  return profile;
+}
 
-document.querySelector(".introduce").textContent = userProfile.introduction;
+// 내 프로필 조회 (GET)
+async function getMyProfile() {
+  const res = await fetch("/api/profile/me/", {
+    method: "GET",
+    credentials: "include",
+  });
 
-const container = document.querySelector(".hobbyInterest");
+  // 내 프로필 조회 실패
+  if (!res.ok) {
+    throw new Error("프로필 조회 실패");
+  }
 
-userProfile.interests.forEach((interest) => {
-  const tag = document.createElement("div");
+  const profile = await res.json();
 
-  tag.classList.add("interestTag");
-  tag.textContent = `#${interest}`;
+  renderProfile(profile);
 
-  container.appendChild(tag);
+  return profile;
+}
+
+// 프로필 렌더링
+function renderProfile(profile) {
+  // 받은 profile 데이터 확인
+  console.log(profile);
+
+  document.querySelector(".userName").textContent = profile.username; // 사용자 이름
+  document.querySelector(".userCountry").textContent = profile.nationality; // 사용자 국적
+
+  // 사용자 전공
+  document
+    .querySelectorAll(".userMajor")
+    .forEach((el) => (el.textContent = profile.major));
+
+  // 사용자 학년
+  document
+    .querySelectorAll(".userGrade")
+    .forEach((el) => (el.textContent = `${profile.grade}학년`));
+
+  // 사용자 자기소개
+  document.querySelector(".introduce").textContent = profile.bio;
+
+  // 사용자 관심사,취미
+  const container = document.querySelector(".hobbyInterest");
+
+  // 사용자 관심사 및 취미 -> Element 요소 하나씩 추가
+  container.innerHTML = "";
+
+  profile.interests
+    .split(",")
+    .map((item) => item.trim())
+    .forEach((interest) => {
+      const tag = document.createElement("div");
+
+      tag.classList.add("interestTag"); // 스타일 지정
+      tag.textContent = `#${interest}`; // 텍스트 설정
+
+      container.appendChild(tag); // 요소 하나씩 추가
+    });
+}
+
+// 내 프로필 수정 (PATCH)
+async function updateProfile(data) {
+  const res = await fetch("/api/profile/me/", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(data),
+  });
+
+  // 프로필 수정 실패
+  if (!res.ok) {
+    throw new Error("프로필 수정 실패");
+  }
+
+  if (res.ok) alert("프로필이 수정되었습니다.");
+
+  return await res.json();
+}
+
+// 현재 url에 userId가 포함되어 있는지 (타인 프로필 조회 vs 내 프로필 조회 -> 분기)
+const params = new URLSearchParams(window.location.search);
+const userId = params.get("userId");
+
+// userId가 없으면 내 프로필 조회
+// userId가 있으면 타인 프로필 조회
+!userId ? getMyProfile() : getUserProfile(userId);
+
+// 학적 정보 편집 버튼 클릭
+editBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+
+  if (!isEditing) {
+    // 프로필 수정 시작
+    // UI 변경 (입력창 보여주기)
+    document.querySelector(".personalTxt").style.display = "none";
+    document.querySelector(".personalInput").style.display = "block";
+  } else {
+    // 프로필 수정 완료
+
+    // 사용자가 입력한 값 (국적, 전공, 학년)
+    const data = {
+      nationality: document.querySelector(".personalInput .userCountry").value,
+      major: document.querySelector(".personalInput .userMajor").value,
+      grade: Number(document.querySelector(".personalInput .userGrade").value),
+    };
+
+    // 사용자 입력값 확인
+    console.log(data);
+
+    // 사용자 정보 PATCH 요청
+    await updateProfile(data);
+
+    // 내 프로필 조회 (GET 요청)
+    await getMyProfile();
+
+    // UI 변경 (입력창 다시 숨기기)
+    document.querySelector(".personalTxt").style.display = "block";
+    document.querySelector(".personalInput").style.display = "none";
+  }
+
+  // 현재 수정 진행 중인지 여부(상태 플래그) 변경
+  isEditing = !isEditing;
+});
+
+// 자기소개 버튼 클릭
+editIntroBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+
+  if (!isIntroEditing) {
+    // 프로필 수정 시작
+    // UI 변경 (입력창 보여주기)
+    document.querySelector(".introduce").style.display = "none";
+    document.querySelector(".introduceInput").style.display = "block";
+  } else {
+    // 프로필 수정 완료
+
+    // 사용자 입력값 (자기소개 내용)
+    const data = {
+      bio: document.querySelector(".introduceInput").value,
+    };
+
+    // 사용자 입력값 확인
+    console.log(data);
+
+    // 사용자 프로필 PATCH 요청
+    await updateProfile(data);
+
+    // 내 프로필 GET 요청
+    await getMyProfile();
+
+    // UI 변경 (입력창 다시 숨기기)
+    document.querySelector(".introduce").style.display = "block";
+    document.querySelector(".introduceInput").style.display = "none";
+  }
+
+  // 현재 수정 진행 중인지 여부(상태 플래그) 변경
+  isIntroEditing = !isIntroEditing;
+});
+
+// 취미/관심사 수정 버튼 클릭
+addInterestBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+
+  if (!isInterestAdd) {
+    // 프로필 수정 시작
+    //
+    document.querySelector(".hobbyInterest").style.display = "none";
+    document.querySelector(".hobbyInterestInput").style.display = "block";
+  } else {
+    // 프로필 수정 완료
+    // 사용자가 선택한 값(취미/관심사) 가져오기
+    const checkedLabels = [
+      ...document.querySelectorAll(".chipInput:checked"),
+    ].map((checkbox) => checkbox.nextElementSibling.textContent.trim());
+
+    const interests = checkedLabels.join(", ");
+    // 사용자가 입력한 값 확인
+    console.log(interests);
+
+    // 사용자 프로필 PATCH 요청
+    await updateProfile({
+      interests: interests,
+    });
+
+    // 내 프로필 GET 요청
+    await getMyProfile();
+
+    // UI 변경 (취미/관심사 선택창 다시 숨기기)
+    document.querySelector(".hobbyInterest").style.display = "grid";
+    document.querySelector(".hobbyInterestInput").style.display = "none";
+  }
+
+  // 현재 수정 진행 중인지 여부(상태 플래그) 변경
+  isInterestAdd = !isInterestAdd;
+});
+
+// [관심 페이지로 이동] 버튼 클릭
+friendBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+  location.href = "/html/friend.html";
+});
+
+// 바텀 내비게이션 바 - [홈] 버튼 클릭 시, home.html(홈)로 이동
+homeNav.addEventListener("click", (event) => {
+  event.preventDefault();
+  location.href = "/html/home.html";
+});
+
+// 바텀 내비게이션 바 - [채팅] 버튼 클릭 시, friend.html(관심 친구 목록 페이지)로 이동
+friendNav.addEventListener("click", (event) => {
+  event.preventDefault();
+  location.href = "/html/friend.html";
+});
+
+// 바텀 내비게이션 바 - [프로필] 버튼 클릭 시, profile.html(프로필 페이지)로 이동
+profileNav.addEventListener("click", (event) => {
+  event.preventDefault();
+  location.href = "/html/profile.html";
 });
