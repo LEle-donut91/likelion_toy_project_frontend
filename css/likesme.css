@@ -139,29 +139,3 @@ body {
     font-weight: 600;
     cursor: pointer;
 }
-.extra-info {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out; /* 부드럽게 펼쳐짐 */
-    padding: 0 10px;
-    color: #6b7280;
-    font-size: 14px;
-}
-
-/* 2. 펼쳐졌을 때 클래스 */
-.friend-card.is-open .extra-info {
-    max-height: 100px; /* 충분한 높이 값 */
-    padding-top: 10px;
-}
-
-/* 3. 화살표 회전 애니메이션 */
-.expand-btn {
-    display: flex;
-    justify-content: flex-end;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.friend-card.is-open .expand-btn {
-    transform: rotate(180deg); /* 펼쳐지면 화살표 뒤집기 */
-}
