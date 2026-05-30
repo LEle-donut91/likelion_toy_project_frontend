@@ -2,6 +2,7 @@ const recmdBtn = document.querySelector(".recmdBtn"); // [친구 추천 · 매�
 const friendBtn = document.querySelector(".friendBtn"); // [채팅 · 번역 지원] 버튼
 const homeNav = document.querySelector(".homeNav"); // 바텀 내비게이션 바 - [홈] 버튼
 const friendNav = document.querySelector(".friendNav"); // 바텀 내비게이션 바 - [채팅] 버튼
+const profileNav = document.querySelector(".profileNav");
 
 twemoji.parse(document.body); // 트위터 이모지 적용 (6개 국가별 국기 이모지를 렌더링하기 위해 필요)
 
@@ -27,5 +28,10 @@ homeNav.addEventListener("click", (event) => {
 friendNav.addEventListener("click", (event) => {
     event.preventDefault();
     location.href="/html/friend.html"
+})
+
+profileNav.addEventListener("click", (event) => {
+    event.preventDefault();
+    location.href="/html/profile.html"
 })
 

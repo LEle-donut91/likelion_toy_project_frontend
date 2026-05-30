@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/profile.css" />
+  </head>
+  <body>
+    <header>
+      <b>계정 홈</b>
+    </header>
+    <section class="sectionOne">
+      <div class="personalInfo">
+        <img class="profileImg" src="/assets/profile/profile_icon.svg" />
+
+        <div class="personalTxt">
+          <div class="userName"></div>
+          <div class="userCountry"></div>
+          <div class="userSummary">
+            <span class="userMajor"></span>
+            <span class="userGrade"></span>
+          </div>
+        </div>
+
+        <button class="editBtn">
+          <img src="/assets/profile/edit_icon.svg" />
+          프로필 수정
+        </button>
+      </div>
+      <hr />
+      <div class="univRecord">
+        <h3>학적 정보</h3>
+
+        <div class="infoRow">
+          <span>학교</span>
+          <span class="userSchool">서울대학교</span>
+        </div>
+
+        <div class="infoRow">
+          <span>학과</span>
+          <span class="userMajor">컴퓨터공학과</span>
+        </div>
+
+        <div class="infoRow">
+          <span>학년</span>
+          <span class="userGrade">3학년</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sectionTwo">
+      <div class="sectionTwoHeader">
+        <b>취미·관심사</b>
+        <button class="addInterestBtn">+ 추가</button>
+      </div>
+      <div class="hobbyInterest"></div>
+    </section>
+
+    <section class="sectionThree">
+      <b>자기소개</b>
+      <div class="introduce"></div>
+      <button class="editIntroBtn">편집</button>
+    </section>
+
+    <div class="friendBtnBg">
+      <img src="/assets/profile/heart_icon.svg" />
+      <button>관심 페이지로 이동</button>
+    </div>
+
+    <script src="/js/profile.js"></script>
+  </body>
+</html>
