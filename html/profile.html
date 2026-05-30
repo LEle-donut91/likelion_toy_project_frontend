@@ -14,11 +14,20 @@
         <img class="profileImg" src="/assets/profile/profile_icon.svg" />
 
         <div class="personalTxt">
-          <div class="userName"></div>
+          <b class="userName"></b>
           <div class="userCountry"></div>
           <div class="userSummary">
             <span class="userMajor"></span>
             <span class="userGrade"></span>
+          </div>
+        </div>
+
+        <div class="personalInput">
+          <input class="userName" placeholder="이름"></input>
+          <input class="userCountry" placeholder="국가"></input>
+          <div class="userSummary">
+            <input class="userMajor" placeholder="전공"></input>
+            <input class="userGrade" placeholder="학년"></input>
           </div>
         </div>
 
@@ -32,18 +41,18 @@
         <h3>학적 정보</h3>
 
         <div class="infoRow">
-          <span>학교</span>
-          <span class="userSchool">서울대학교</span>
+          <span class="spanLabel">학교</span>
+          <span class="userSchool"></span>
         </div>
 
         <div class="infoRow">
-          <span>학과</span>
-          <span class="userMajor">컴퓨터공학과</span>
+          <span class="spanLabel">학과</span>
+          <span class="userMajor"></span>
         </div>
 
         <div class="infoRow">
-          <span>학년</span>
-          <span class="userGrade">3학년</span>
+          <span class="spanLabel">학년</span>
+          <span class="userGrade"></span>
         </div>
       </div>
     </section>
@@ -54,11 +63,76 @@
         <button class="addInterestBtn">+ 추가</button>
       </div>
       <div class="hobbyInterest"></div>
+
+        <table class="hobbyInterestInput">
+            <tr>
+              <td>
+                <input type="checkbox" id="chip1" class="chipInput" />
+                <label for="chip1" class="chipLabel">
+                  <img src="/assets/join/sports_icon.svg" class="chipImg" />
+                  체육
+                </label>
+              </td>
+              <td>
+                <input type="checkbox" id="chip2" class="chipInput" />
+                <label for="chip2" class="chipLabel">
+                  <img src="/assets/join/music_icon.svg" class="chipImg" />
+                  음악
+                </label>
+              </td>
+              <td>
+                <input type="checkbox" id="chip3" class="chipInput" />
+                <label for="chip3" class="chipLabel">
+                  <img src="/assets/join/art_icon.svg" class="chipImg" />
+                  예술
+                </label>
+              </td>
+              <td>
+                <input type="checkbox" id="chip4" class="chipInput" />
+                <label for="chip4" class="chipLabel">
+                  <img src="/assets/join/book_icon.svg" class="chipImg" />
+                  독서
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" id="chip5" class="chipInput" />
+                <label for="chip5" class="chipLabel">
+                  <img src="/assets/join/cook_icon.svg" class="chipImg" />
+                  요리</label
+                >
+              </td>
+              <td>
+                <input type="checkbox" id="chip6" class="chipInput" />
+                <label for="chip6" class="chipLabel">
+                  <img src="/assets/join/game_icon.svg" class="chipImg" />
+                  게임</label
+                >
+              </td>
+              <td>
+                <input type="checkbox" id="chip7" class="chipInput" />
+                <label for="chip7" class="chipLabel">
+                  <img src="/assets/join/trip_icon.svg" class="chipImg" />
+                  여행</label
+                >
+              </td>
+              <td>
+                <input type="checkbox" id="chip8" class="chipInput" />
+                <label for="chip8" class="chipLabel">
+                  <img src="/assets/join/more_icon.svg" class="chipImg" />
+                  더보기</label
+                >
+              </td>
+            </tr>
+        </table>
     </section>
 
     <section class="sectionThree">
       <b>자기소개</b>
       <div class="introduce"></div>
+      <input class="introduceInput"/>
+    
       <button class="editIntroBtn">편집</button>
     </section>
 
@@ -66,6 +140,27 @@
       <img src="/assets/profile/heart_icon.svg" />
       <button>관심 페이지로 이동</button>
     </div>
+
+    <!-- 바텀 내비게이션 바 -->
+    <nav>
+      <!-- 홈 버튼 (home.html로 이동) -->
+      <button class="homeNav">
+        <img class="nonActiveIcon" src="/assets/profile/home_nav_icon.svg" />
+        <span class="nonActiveSpan">홈</span>
+      </button>
+
+      <!-- 채팅 버튼 (friend.html로 이동) -->
+      <button class="friendNav">
+        <img class="nonActiveIcon" src="/assets/profile/chat_nav_icon.svg" />
+        <span class="nonActiveSpan">채팅</span>
+      </button>
+
+      <!-- 프로필 버튼 -->
+      <button class="profileNav">
+        <img class="activeIcon" src="/assets/profile/profile_active_nav_icon.svg" />
+        <span class="activeSpan">프로필</span>
+      </button>
+    </nav>
 
     <script src="/js/profile.js"></script>
   </body>
